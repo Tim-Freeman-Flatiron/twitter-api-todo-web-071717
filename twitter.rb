@@ -30,10 +30,12 @@ class TwitterApi
     followers = client.followers(username)
     i = 0
     collection = []
-    while i <= 9 
-      followers.each do |follower|
-        collection << follower
-        i += 1
+    followers.each do |follower|
+      if i < 10 
+      collection << follower
+      i += 1
+      else
+        break
       end
     end
     collection
@@ -41,7 +43,7 @@ class TwitterApi
 
   def homepage_timeline
     #find the twitter gem method that retreives the tweets from a user's timeline.
-    client.user_timeline
+    client.home_timeline
   end
   
 end
